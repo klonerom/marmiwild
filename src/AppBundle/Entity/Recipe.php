@@ -73,6 +73,11 @@ class Recipe
      */
     private $categories;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Upload", mappedBy="recipe", cascade={"persist", "remove"})
+     */
+    private $uploads;
+
 
     /**
      * Get id
@@ -263,6 +268,25 @@ class Recipe
     public function setCategories($categories)
     {
         $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUploads()
+    {
+        return $this->uploads;
+    }
+
+    /**
+     * @param mixed $uploads
+     * @return Recipe
+     */
+    public function setUploads($uploads)
+    {
+        $this->uploads = $uploads;
 
         return $this;
     }
