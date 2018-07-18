@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Recipes list</h1>
+    <h1>Liste des recettes</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Preparationtime</th>
-                <th>Cooktime</th>
-                <th>Serving</th>
-                <th>Difficultylevel</th>
-                <th>Cost</th>
+                <th>Préparation</th>
+                <th>Cuisson</th>
+                <th>Nb Personnes</th>
+                <th>Difficulté</th>
+                <th>Coût</th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
@@ -29,10 +29,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('recipe_show', { 'id': recipe.id }) }}">show</a>
+                            <a href="{{ path('recipe_show', { 'id': recipe.id }) }}"><i class="fas fa-info-circle"></i></a>
                         </li>
                         <li>
-                            <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}">edit</a>
+                            <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}"><i class="fas fa-pencil-alt"></i></a>
                         </li>
                     </ul>
                 </td>
@@ -43,7 +43,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('recipe_new') }}">Create a new recipe</a>
+            <a href="{{ path('recipe_new') }}"><i class="fas fa-plus"></i> Ajouter une nouvelle recette</a>
         </li>
     </ul>
 {% endblock %}

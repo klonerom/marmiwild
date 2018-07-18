@@ -78,6 +78,13 @@ class Recipe
      */
     private $uploads;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="bestSeller", type="boolean")
+     */
+    private $bestSeller;
+
 
     /**
      * Get id
@@ -287,6 +294,25 @@ class Recipe
     public function setUploads($uploads)
     {
         $this->uploads = $uploads;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBestSeller()
+    {
+        return $this->bestSeller;
+    }
+
+    /**
+     * @param bool $bestSeller
+     * @return Recipe
+     */
+    public function setBestSeller($bestSeller)
+    {
+        $this->bestSeller = $bestSeller;
 
         return $this;
     }

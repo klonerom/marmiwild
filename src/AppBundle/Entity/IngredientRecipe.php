@@ -32,6 +32,13 @@ class IngredientRecipe
     /**
      * @var int
      *
+     * @ORM\Column(name="unity", type="integer")
+     */
+    private $unity;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="serving", type="integer")
      */
     private $serving;
@@ -121,5 +128,25 @@ class IngredientRecipe
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getUnity()
+    {
+        return $this->unity;
+    }
+
+    /**
+     * @param int $unity
+     * @return IngredientRecipe
+     */
+    public function setUnity($unity)
+    {
+        $this->unity = $unity;
+
+        return $this;
+    }
+
 }
 
