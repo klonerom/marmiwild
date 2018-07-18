@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categorierecipes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorieRecipe in categorieRecipes %}
+            <tr>
+                <td><a href="{{ path('categories-recipe_show', { 'id': categorieRecipe.id }) }}">{{ categorieRecipe.id }}</a></td>
+                <td>{{ categorieRecipe.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categories-recipe_show', { 'id': categorieRecipe.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categories-recipe_edit', { 'id': categorieRecipe.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categories-recipe_new') }}">Create a new categorieRecipe</a>
+        </li>
+    </ul>
+{% endblock %}

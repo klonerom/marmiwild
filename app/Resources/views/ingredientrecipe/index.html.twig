@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ingredientrecipes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Serving</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ingredientRecipe in ingredientRecipes %}
+            <tr>
+                <td><a href="{{ path('ingredients-recipe_show', { 'id': ingredientRecipe.id }) }}">{{ ingredientRecipe.id }}</a></td>
+                <td>{{ ingredientRecipe.quantity }}</td>
+                <td>{{ ingredientRecipe.serving }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ingredients-recipe_show', { 'id': ingredientRecipe.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ingredients-recipe_new') }}">Create a new ingredientRecipe</a>
+        </li>
+    </ul>
+{% endblock %}

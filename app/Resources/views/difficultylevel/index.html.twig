@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Difficultylevels list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Level</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for difficultyLevel in difficultyLevels %}
+            <tr>
+                <td><a href="{{ path('difficultylevel_show', { 'id': difficultyLevel.id }) }}">{{ difficultyLevel.id }}</a></td>
+                <td>{{ difficultyLevel.level }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('difficultylevel_show', { 'id': difficultyLevel.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('difficultylevel_edit', { 'id': difficultyLevel.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('difficultylevel_new') }}">Create a new difficultyLevel</a>
+        </li>
+    </ul>
+{% endblock %}
