@@ -35,6 +35,14 @@ class CategorieRecipe
      */
     private $recipe;
 
+    /**
+     * Many categories to one recipe
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categorie", inversedBy="categories")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     */
+    private $categorie;
+
+
 
     /**
      * Get id
@@ -89,7 +97,24 @@ class CategorieRecipe
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
 
+    /**
+     * @param mixed $categorie
+     * @return CategorieRecipe
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
 
 }
 

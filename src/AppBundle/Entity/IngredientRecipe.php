@@ -47,7 +47,7 @@ class IngredientRecipe
 
     /**
      * Many recipes to one ingredient
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredient", inversedBy="recipes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredient", inversedBy="ingredients")
      * @ORM\JoinColumn(name="ingredient_id", referencedColumnName="id")
      */
     private $ingredient;
@@ -65,10 +65,8 @@ class IngredientRecipe
      * @param $unity
      * @param $ingredient
      */
-    public function __construct($recipe, $ingredient)
+    public function __construct($unity)
     {
-        $this->recipe = new ArrayCollection();
-        $this->ingredient = new ArrayCollection();
         $this->unity = new ArrayCollection();
     }
 
@@ -137,7 +135,7 @@ class IngredientRecipe
      */
     public function getRecipe()
     {
-        return $this->recipe->toArray();
+        return $this->recipe;
     }
 
     /**
@@ -175,7 +173,7 @@ class IngredientRecipe
      */
     public function getIngredient()
     {
-        return $this->ingredient->toArray();
+        return $this->ingredient;
     }
 
     /**

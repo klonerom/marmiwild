@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +28,20 @@ class Categorie
      * @ORM\Column(name="type", type="string", length=45)
      */
     private $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CategorieRecipe", mappedBy="categorie")
+     */
+    private $categories;
+
+    /**
+     * Categorie constructor.
+     * @param $categories
+     */
+    public function __construct($categories)
+    {
+        $this->categories = new ArrayCollection();
+    }
 
 
     /**
@@ -62,5 +77,26 @@ class Categorie
     {
         return $this->type;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories->toArray();
+    }
+
+    /**
+     * @param mixed $categories
+     * @return Categorie
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+
 }
 

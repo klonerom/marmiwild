@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +33,15 @@ class Unity
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\IngredientRecipe", mappedBy="unity")
      */
     private $ingredients;
+
+    /**
+     * Unity constructor.
+     * @param $ingredients
+     */
+    public function __construct($ingredients)
+    {
+        $this->ingredients = new ArrayCollection();
+    }
 
 
     /**
@@ -73,7 +83,7 @@ class Unity
      */
     public function getIngredients()
     {
-        return $this->ingredients;
+        return $this->ingredients->toArray();
     }
 
     /**

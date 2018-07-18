@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,6 +34,14 @@ class Ingredient
      */
     private $ingredients;
 
+    /**
+     * Ingredient constructor.
+     * @param $ingredients
+     */
+    public function __construct($ingredients)
+    {
+        $this->ingredients = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -73,7 +82,7 @@ class Ingredient
      */
     public function getIngredients()
     {
-        return $this->ingredients;
+        return $this->ingredients->toArray();
     }
 
     /**
