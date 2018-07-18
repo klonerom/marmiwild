@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ingredientrecipe</h1>
+    <h1>Ingrédients</h1>
+    <h2>Recette : {{ recipe.name }}</h2>
 
-    <table>
+    <table class="table table-striped table-responsive-sm mt-5">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ ingredientRecipe.id }}</td>
+                <th>Ingrédient</th>
+                <td>{{ ingredientRecipe.ingredient.type }}</td>
             </tr>
             <tr>
-                <th>Quantity</th>
+                <th>Quantité</th>
                 <td>{{ ingredientRecipe.quantity }}</td>
             </tr>
             <tr>
-                <th>Serving</th>
+                <th>Unité</th>
+                <td>{{ ingredientRecipe.unity.unity }}</td>
+            </tr>
+            <tr>
+                <th>Personnes</th>
                 <td>{{ ingredientRecipe.serving }}</td>
             </tr>
         </tbody>
@@ -22,15 +27,13 @@
 
     <ul>
         <li>
-            <a href="{{ path('ingredients-recipe_index') }}">Back to the list</a>
+            <a href="{{ path('ingredients-recipe_index', { 'recipe_id': recipe.id }) }}"><i class="fas fa-list"></i> retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id }) }}">Edit</a>
+            <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id }) }}"><i class="fas fa-pencil-alt"></i></a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('ingredients-recipe_delete', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id }) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
         </li>
     </ul>
 {% endblock %}

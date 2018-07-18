@@ -24,9 +24,7 @@ class IngredientRecipe
 
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="quantity", type="integer")
+     * @ORM\Column(name="quantity", type="decimal", precision=4, scale=2)
      */
     private $quantity;
 

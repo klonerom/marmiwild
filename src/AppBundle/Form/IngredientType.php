@@ -24,13 +24,5 @@ class IngredientType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'appbundle_ingredient';
-    }
-
 
 }

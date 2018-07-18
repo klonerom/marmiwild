@@ -1,41 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ingredientrecipes list</h1>
+    <section>
+        <h1>Liste des ingrédients</h1>
+        <h2>Recette : {{ recipe.name }}</h2>
+        <a href="{{ path('ingredients-recipe_new', {'recipe_id': recipe.id}) }}" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter un nouvel ingrédient</a>
 
-    <table>
-        <thead>
+        <table class="table table-striped table-responsive-sm mt-5">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Quantity</th>
-                <th>Serving</th>
+                <th>Ingrédient</th>
+                <th>Quantité</th>
+                <th>Unité</th>
+                <th>Personnes</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for ingredientRecipe in ingredientRecipes %}
-            <tr>
-                <td><a href="{{ path('ingredients-recipe_show', { 'id': ingredientRecipe.id }) }}">{{ ingredientRecipe.id }}</a></td>
-                <td>{{ ingredientRecipe.quantity }}</td>
-                <td>{{ ingredientRecipe.serving }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('ingredients-recipe_show', { 'id': ingredientRecipe.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for ingredientRecipe in ingredientRecipes %}
+                <tr>
+                    <td>{{ ingredientRecipe.ingredient.type }}</td>
+                    <td>{{ ingredientRecipe.quantity }}</td>
+                    <td>{{ ingredientRecipe.unity.unity }}</td>
+                    <td>{{ ingredientRecipe.serving }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('ingredients-recipe_show', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id  }) }}"><i class="fas fa-info-circle"></i></a>
+                            </li>
+                            <li>
+                                <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id  }) }}"><i class="fas fa-pencil-alt"></i></a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
 
-    <ul>
-        <li>
-            <a href="{{ path('ingredients-recipe_new') }}">Create a new ingredientRecipe</a>
-        </li>
-    </ul>
+
 {% endblock %}

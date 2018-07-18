@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ajout d'ingrédients à la recette</h1>
+    <h1 class="mb-5">Ajout d'ingrédients à la recette : {{ recipe.name }}</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('ingredients-recipe_index') }}"><i class="fas fa-list"></i> Retour à la liste</a>
+            <a href="{{ path('ingredients-recipe_index', {'recipe_id': recipe.id}) }}"><i class="fas fa-list"></i> Retour à la liste des ingrédients</a>
         </li>
     </ul>
 {% endblock %}

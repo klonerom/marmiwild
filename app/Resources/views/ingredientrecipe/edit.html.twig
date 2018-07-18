@@ -1,21 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ingredientrecipe edit</h1>
+    <section>
+        <h1>Modification d'ingrédient</h1>
+        <h2 class="mb-5">Recette : {{ recipe.name }}</h2>
 
-    {{ form_start(edit_form) }}
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <input type="submit" value="Modifier" class="btn btn-success" />
+        {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('ingredients-recipe_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('ingredients-recipe_index', {'recipe_id': recipe.id}) }}"><i class="fas fa-list"></i> Liste des ingrédients</a>
+            </li>
+            <li>
+                <a href="{{ path('ingredients-recipe_delete', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id }) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+            </li>
+        </ul>
+    </section>
+
 {% endblock %}
