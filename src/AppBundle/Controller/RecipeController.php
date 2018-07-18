@@ -67,6 +67,11 @@ class RecipeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($recipe);
 
+//        foreach ($recipe->getIngredients() as $i) {
+//
+//            dump($i->getIngredient()->getType());
+//        }
+//        die;
         return $this->render('recipe/show.html.twig', array(
             'recipe' => $recipe,
             'delete_form' => $deleteForm->createView(),

@@ -6,14 +6,34 @@
     </section>
     <section>
         <div class="container">
+            <div class="row my-5">
+                <div class="col-md-6 offset-md-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une recette" aria-label="Search">
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-secondary my-2 my-sm-0 py-2" href="#"><i class="fas fa-search"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
             <h1 class="text-center mt-5">Nos meilleurs recettes</h1>
             <p class="text-center">Retrouvez toutes les recettes préférées des nos marmiwilders ! </p>
+
             <div class="row">
                 {% for recipe in bestRecipes %}
-                    <div class="card col-md-3">
+                    <div class="card col-md-4 mt-3">
                         <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="{{ path('recipe_show', { 'id': recipe.id }) }}">{{ recipe.name }}</a></h5>
+                            <h5 class="card-title text-center mb-3"><a href="{{ path('recipe_show', { 'id': recipe.id }) }}">{{ recipe.name }}</a></h5>
+                            <p><i class="far fa-clock"></i> {{ recipe.preparationTime + recipe.cookTime }} min</p>
+                            <p><i class="fas fa-dumbbell"></i> {{ recipe.difficultyLevel.level }}</p>
+                            <p><i class="far fa-money-bill-alt"></i> {{ recipe.cost.cost }}</p>
                         </div>
                     </div>
                 {% endfor %}

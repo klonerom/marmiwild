@@ -27,30 +27,45 @@
                     <td>{{ recipe.cost.cost }}</td>
                 </tr>
                 <tr>
+                    <th>Ingrédients</th>
+                    <td>
+                        {% if recipe.ingredients %}
+                            <ul>
+                                {% for ingredient in recipe.ingredients %}
+                                    <li>{{ ingredient.quantity }} {{ ingredient.unity.unity }} {{ ingredient.ingredient.type }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            Aucun ingrédient précisé
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
                     <th>Description</th>
                     <td>{{ recipe.description|raw }}</td>
                 </tr>
             </tbody>
         </table>
 
-        <ul>
-            <li>
-                <a href="{{ path('recipe_index') }}" class="btn btn-info"><i class="fas fa-list"></i> Liste des recettes</a>
-            </li>
-            <li>
+        <div class="row text-right">
+            <div class="col-md-2">
+                <a href="{{ path('recipe_index') }}" class="btn btn-info" title="Liste des recettes"><i class="fas fa-list"></i></a>
+
+            </div>
+            <div class="col-md-2">
                 <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
-            </li>
-            <li>
-                <a href="{{ path('ingredients-recipe_index', { 'recipe_id': recipe.id }) }}" class="btn btn-info">Liste des ingrédients</a>
-            </li>
-            <li>
-                <a href="{{ path('ingredients-recipe_new', { 'recipe_id': recipe.id }) }}" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter un ingrédient</a>
-            </li>
-            <li>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ path('ingredients-recipe_index', { 'recipe_id': recipe.id }) }}" class="btn btn-dark" title="Liste des ingrédients"><i class="far fa-lemon"></i></a>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ path('ingredients-recipe_new', { 'recipe_id': recipe.id }) }}" class="btn btn-dark" titre="Ajouter un ingrédient"><i class="fas fa-plus"></i> <i class="far fa-lemon"></i></a>
+            </div>
+            <div class="col-md-2">
                 {{ form_start(delete_form) }}
                     <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 {{ form_end(delete_form) }}
-            </li>
-        </ul>
+            </div>
+        </div>
     </section>
 {% endblock %}
