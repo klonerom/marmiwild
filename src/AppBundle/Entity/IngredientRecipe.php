@@ -59,16 +59,6 @@ class IngredientRecipe
      */
     private $unity;
 
-    /**
-     * IngredientRecipe constructor.
-     * @param $recipe
-     * @param $unity
-     * @param $ingredient
-     */
-    public function __construct($unity)
-    {
-        $this->unity = new ArrayCollection();
-    }
 
 
     /**
@@ -154,7 +144,7 @@ class IngredientRecipe
      */
     public function getUnity()
     {
-        return $this->unity->toArray();
+        return $this->unity;
     }
 
     /**
