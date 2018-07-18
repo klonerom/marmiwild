@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,13 +33,6 @@ class IngredientRecipe
     /**
      * @var int
      *
-     * @ORM\Column(name="unity", type="integer")
-     */
-    private $unity;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="serving", type="integer")
      */
     private $serving;
@@ -49,6 +43,34 @@ class IngredientRecipe
      * @ORM\JoinColumn(name="recipe_id", referencedColumnName="id")
      */
     private $recipe;
+
+
+    /**
+     * Many recipes to one ingredient
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredient", inversedBy="recipes")
+     * @ORM\JoinColumn(name="ingredient_id", referencedColumnName="id")
+     */
+    private $ingredient;
+
+    /**
+     * Many unity to one ingredient
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Unity", inversedBy="ingredients")
+     * @ORM\JoinColumn(name="unity_id", referencedColumnName="id")
+     */
+    private $unity;
+
+    /**
+     * IngredientRecipe constructor.
+     * @param $recipe
+     * @param $unity
+     * @param $ingredient
+     */
+    public function __construct($recipe, $ingredient)
+    {
+        $this->recipe = new ArrayCollection();
+        $this->ingredient = new ArrayCollection();
+        $this->unity = new ArrayCollection();
+    }
 
 
     /**
@@ -115,7 +137,7 @@ class IngredientRecipe
      */
     public function getRecipe()
     {
-        return $this->recipe;
+        return $this->recipe->toArray();
     }
 
     /**
@@ -134,7 +156,7 @@ class IngredientRecipe
      */
     public function getUnity()
     {
-        return $this->unity;
+        return $this->unity->toArray();
     }
 
     /**
@@ -144,6 +166,25 @@ class IngredientRecipe
     public function setUnity($unity)
     {
         $this->unity = $unity;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIngredient()
+    {
+        return $this->ingredient->toArray();
+    }
+
+    /**
+     * @param mixed $ingredient
+     * @return IngredientRecipe
+     */
+    public function setIngredient($ingredient)
+    {
+        $this->ingredient = $ingredient;
 
         return $this;
     }

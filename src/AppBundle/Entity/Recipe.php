@@ -85,6 +85,19 @@ class Recipe
      */
     private $bestSeller;
 
+    /**
+     * Recipe constructor.
+     * @param $ingredients
+     * @param $categories
+     * @param $uploads
+     */
+    public function __construct($ingredients, $categories, $uploads)
+    {
+        $this->ingredients = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->uploads = new ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -246,7 +259,7 @@ class Recipe
      */
     public function getIngredients()
     {
-        return $this->ingredients;
+        return $this->ingredients->toArray();
     }
 
     /**
@@ -265,7 +278,7 @@ class Recipe
      */
     public function getCategories()
     {
-        return $this->categories;
+        return $this->categories->toArray();
     }
 
     /**
@@ -284,7 +297,7 @@ class Recipe
      */
     public function getUploads()
     {
-        return $this->uploads;
+        return $this->uploads->toArray();
     }
 
     /**

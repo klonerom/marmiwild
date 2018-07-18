@@ -28,6 +28,11 @@ class Unity
      */
     private $unity;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\IngredientRecipe", mappedBy="unity")
+     */
+    private $ingredients;
+
 
     /**
      * Get id
@@ -62,5 +67,25 @@ class Unity
     {
         return $this->unity;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * @param mixed $ingredients
+     * @return Unity
+     */
+    public function setIngredients($ingredients)
+    {
+        $this->ingredients = $ingredients;
+
+        return $this;
+    }
+
 }
 

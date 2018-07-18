@@ -28,6 +28,11 @@ class Ingredient
      */
     private $type;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\IngredientRecipe", mappedBy="ingredient")
+     */
+    private $ingredients;
+
 
     /**
      * Get id
@@ -62,5 +67,26 @@ class Ingredient
     {
         return $this->type;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * @param mixed $ingredients
+     * @return Ingredient
+     */
+    public function setIngredients($ingredients)
+    {
+        $this->ingredients = $ingredients;
+
+        return $this;
+    }
+
+
 }
 
