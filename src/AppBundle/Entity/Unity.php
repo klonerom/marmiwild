@@ -36,9 +36,8 @@ class Unity
 
     /**
      * Unity constructor.
-     * @param $ingredients
      */
-    public function __construct($ingredients)
+    public function __construct()
     {
         $this->ingredients = new ArrayCollection();
     }

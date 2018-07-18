@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,18 @@ class Cost
      */
     private $cost;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recipe", mappedBy="cost")
+     */
+    private $recipes;
+
+    /**
+     * DifficultyLevel constructor.
+     */
+    public function __construct()
+    {
+        $this->recipes = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -62,5 +75,26 @@ class Cost
     {
         return $this->cost;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRecipes()
+    {
+        return $this->recipes->toArray();
+    }
+
+    /**
+     * @param mixed $recipes
+     * @return Cost
+     */
+    public function setRecipes($recipes)
+    {
+        $this->recipes = $recipes;
+
+        return $this;
+    }
+
+
 }
 

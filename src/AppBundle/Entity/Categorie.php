@@ -36,9 +36,8 @@ class Categorie
 
     /**
      * Categorie constructor.
-     * @param $categories
      */
-    public function __construct($categories)
+    public function __construct()
     {
         $this->categories = new ArrayCollection();
     }

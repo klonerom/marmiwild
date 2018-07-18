@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +28,19 @@ class DifficultyLevel
      * @ORM\Column(name="level", type="string", length=45)
      */
     private $level;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recipe", mappedBy="difficultyLevel")
+     */
+    private $recipes;
+
+    /**
+     * DifficultyLevel constructor.
+     */
+    public function __construct()
+    {
+        $this->recipes = new ArrayCollection();
+    }
 
 
     /**
@@ -62,5 +76,26 @@ class DifficultyLevel
     {
         return $this->level;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRecipes()
+    {
+        return $this->recipes->toArray();
+    }
+
+    /**
+     * @param mixed $recipes
+     * @return DifficultyLevel
+     */
+    public function setRecipes($recipes)
+    {
+        $this->recipes = $recipes;
+
+        return $this;
+    }
+
+
 }
 

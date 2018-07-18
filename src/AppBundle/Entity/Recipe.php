@@ -23,6 +23,12 @@ class Recipe
     private $id;
 
     /**
+     * @var string
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="preparationTime", type="integer")
@@ -44,16 +50,16 @@ class Recipe
     private $serving;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="difficultyLevel", type="smallint")
+     * Many recipes to one difficultyLevel
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\DifficultyLevel", inversedBy="recipes")
+     * @ORM\JoinColumn(name="difficultyLevel_id", referencedColumnName="id")
      */
     private $difficultyLevel;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="cost", type="smallint")
+     * Many recipes to one cost
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cost", inversedBy="recipes")
+     * @ORM\JoinColumn(name="cost_id", referencedColumnName="id")
      */
     private $cost;
 
@@ -88,11 +94,8 @@ class Recipe
 
     /**
      * Recipe constructor.
-     * @param $ingredients
-     * @param $categories
-     * @param $uploads
      */
-    public function __construct($ingredients, $categories, $uploads)
+    public function __construct()
     {
         $this->ingredients = new ArrayCollection();
         $this->categories = new ArrayCollection();
@@ -108,6 +111,25 @@ class Recipe
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Recipe
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     /**

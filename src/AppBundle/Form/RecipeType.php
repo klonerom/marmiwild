@@ -23,6 +23,11 @@ class RecipeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name', TextType::class, [
+                'label' => 'Nom de la recette',
+                'attr' => ['maxlength' => 45],
+                'constraints' => new NotBlank(['message' => 'Ce champs ne doit pas être vide'])
+            ])
             ->add('preparationTime', IntegerType::class, [
                 'label' => 'Temps de préparation (min)',
                 'required' => false,
