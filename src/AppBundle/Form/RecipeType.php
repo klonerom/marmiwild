@@ -24,7 +24,7 @@ class RecipeType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom de la recette',
+                'label' => 'Nom de la recette *',
                 'attr' => ['maxlength' => 45],
                 'constraints' => new NotBlank(['message' => 'Ce champs ne doit pas être vide'])
             ])
@@ -76,7 +76,6 @@ class RecipeType extends AbstractType
                     'Non' => 0,
                     'Oui' => 1,
                     ],
-                'data' => 0,
                 'label' => 'Meilleur recette'
             ]);
     }/**

@@ -6,16 +6,17 @@
     </section>
     <section>
         <div class="container">
-            <h1 class="text-center">Nos meilleurs recettes</h1>
+            <h1 class="text-center mt-5">Nos meilleurs recettes</h1>
             <p class="text-center">Retrouvez toutes les recettes préférées des nos marmiwilders ! </p>
             <div class="row">
-                <div class="card col-md-3">
-                    <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                {% for recipe in bestRecipes %}
+                    <div class="card col-md-3">
+                        <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{{ path('recipe_show', { 'id': recipe.id }) }}">{{ recipe.name }}</a></h5>
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

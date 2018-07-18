@@ -14,6 +14,18 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('Home/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $bestRecipes = $em->getRepository('AppBundle:Recipe')->findBy(
+            ['bestSeller' => 1]
+        );
+
+        //Shuffle object
+        $bestRecipes = (array)$bestRecipes;
+        shuffle($bestRecipes);
+
+        return $this->render('Home/index.html.twig', array(
+            'bestRecipes' => $bestRecipes,
+        ));
     }
 }
