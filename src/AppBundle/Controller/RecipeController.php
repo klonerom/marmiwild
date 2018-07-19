@@ -45,8 +45,11 @@ class RecipeController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($recipe);
             $em->flush();
+
+            $this->addFlash('success', 'La recette est bien ajoutée !');
 
             return $this->redirectToRoute('recipe_show', array('id' => $recipe->getId()));
         }

@@ -5,8 +5,30 @@
         <h1>Mise à jour de la recette</h1>
 
         {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" class="btn btn-success"/>
+            {{ form_row(edit_form.name) }}
+            {{ form_row(edit_form.preparationTime) }}
+            {{ form_row(edit_form.cookTime) }}
+            {{ form_row(edit_form.serving) }}
+            {{ form_row(edit_form.difficultyLevel) }}
+            {{ form_row(edit_form.cost) }}
+            {{ form_row(edit_form.description) }}
+            {{ form_row(edit_form.bestSeller) }}
+
+            <div class="row" id="ingredient-fields-list"
+            data-prototype="{{ form_widget(edit_form.ingredients.vars.prototype)|e }}"
+            data-widget-tags="{{ '<div class="col-md-4"></div>'|e }}">
+            {% for ingredientField in edit_form.ingredients %}
+                <div class="col-md-4 my-3">
+                {{ form_errors(ingredientField) }}
+            {{ form_widget(ingredientField) }}
+            </div>
+            {% endfor %}
+                </div>
+
+            <button type="button" class="add-another-collection-widget btn btn-info" data-list="#ingredient-fields-list">Ajouter un ingredient</button>
+
+
+            <input type="submit" value="Modifier" class="btn btn-success"/>
         {{ form_end(edit_form) }}
 
         <ul>
@@ -21,3 +43,8 @@
         </ul>
     </section>
 {% endblock %}
+
+{% block javascripts %}
+    //add new ingredients
+    <script src="{{ asset('assets/js/add-collection-widget.js') }}"></script>
+{%  endblock %}

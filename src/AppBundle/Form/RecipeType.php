@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -77,7 +78,13 @@ class RecipeType extends AbstractType
                     'Oui' => 1,
                     ],
                 'label' => 'Meilleur recette'
+            ])
+            ->add('ingredients', CollectionType::class, [
+                'entry_type'   => IngredientRecipeType::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
             ]);
+
     }/**
      * {@inheritdoc}
      */
