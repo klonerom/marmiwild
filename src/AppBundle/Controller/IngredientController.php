@@ -24,7 +24,7 @@ class IngredientController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
+        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAllOrderByType();
 
         return $this->render('ingredient/index.html.twig', array(
             'ingredients' => $ingredients,

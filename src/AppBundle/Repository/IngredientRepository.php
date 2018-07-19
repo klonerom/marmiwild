@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class IngredientRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllOrderByType()
+    {
+        return $this->findBy(array(), array('type' => 'ASC'));
+    }
+
 }
