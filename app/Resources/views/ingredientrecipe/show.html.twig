@@ -18,22 +18,18 @@
                 <th>Unité</th>
                 <td>{{ ingredientRecipe.unity.unity }}</td>
             </tr>
-            <tr>
-                <th>Personnes</th>
-                <td>{{ ingredientRecipe.serving }}</td>
-            </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('ingredients-recipe_index', { 'recipe_id': recipe.id }) }}"><i class="fas fa-list"></i> retour à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id }) }}"><i class="fas fa-pencil-alt"></i></a>
-        </li>
-        <li>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{{ path('ingredients-recipe_index', { 'recipe_id': recipe.id }) }}" class="btn btn-info"><i class="fas fa-list"></i> retour à la liste</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id }) }}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>
+        </div>
+        <div class="col-md-4">
             <a href="{{ path('ingredients-recipe_delete', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id }) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
-        </li>
-    </ul>
+        </div>
+    </div>
 {% endblock %}

@@ -8,12 +8,12 @@
         <input type="submit" value="Enregistrer" class="btn btn-success" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('ingredients-recipe_index', {'recipe_id': recipe.id}) }}"><i class="fas fa-list"></i> Retour à la liste des ingrédients</a>
-        </li>
-        <li>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ path('ingredients-recipe_index', {'recipe_id': recipe.id}) }}" class="btn btn-info"><i class="fas fa-list"></i> Retour à la liste des ingrédients</a>
+        </div>
+        <div class="col-md-6">
             <a href="{{ path('ingredient_new') }}" class="btn btn-success" title="Ajouter un nouvel ingrédient"><i class="fas fa-plus"></i> Ajouter un nouvel ingrédient à la liste des ingrédients disponibles</a>
-        </li>
-    </ul>
+        </div>
+    </div>
 {% endblock %}

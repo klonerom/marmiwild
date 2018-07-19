@@ -10,14 +10,14 @@
         <input type="submit" value="Modifier" class="btn btn-success" />
         {{ form_end(edit_form) }}
 
-        <ul>
-            <li>
-                <a href="{{ path('ingredients-recipe_index', {'recipe_id': recipe.id}) }}"><i class="fas fa-list"></i> Liste des ingrédients</a>
-            </li>
-            <li>
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="{{ path('ingredients-recipe_index', {'recipe_id': recipe.id}) }}" class="btn btn-info"><i class="fas fa-list"></i> Liste des ingrédients</a>
+            </div>
+            <div class="col-sm-6">
                 <a href="{{ path('ingredients-recipe_delete', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id }) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
-            </li>
-        </ul>
+            </div>
+        </div>
     </section>
 
 {% endblock %}

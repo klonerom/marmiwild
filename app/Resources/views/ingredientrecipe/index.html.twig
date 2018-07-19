@@ -6,7 +6,7 @@
         <h2>Recette : {{ recipe.name }}</h2>
         <a href="{{ path('ingredients-recipe_new', {'recipe_id': recipe.id}) }}" class="btn btn-success" title="Ajouter un nouvel ingrédient à la recette"><i class="fas fa-plus"></i> Ajouter un nouvel ingrédient à la recette</a>
 
-        <table class="table table-striped table-responsive-sm mt-5">
+        <table class="table table-striped table-responsive-sm mt-5 text-center">
             <thead>
             <tr>
                 <th>Ingrédient</th>
@@ -22,14 +22,14 @@
                     <td>{{ ingredientRecipe.quantity }}</td>
                     <td>{{ ingredientRecipe.unity.unity }}</td>
                     <td>
-                        <ul>
-                            <li>
+                        <div class="row">
+                            <div class="col-sm-6">
                                 <a href="{{ path('ingredients-recipe_show', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id  }) }}" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
-                            </li>
-                            <li>
+                            </div>
+                            <div class="col-sm-6">
                                 <a href="{{ path('ingredients-recipe_edit', { 'id': ingredientRecipe.id, 'recipe_id': recipe.id  }) }}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             {% endfor %}
