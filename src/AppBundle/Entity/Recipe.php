@@ -293,6 +293,11 @@ class Recipe
     {
         $this->ingredients = $ingredients;
 
+        //add recipe in each ingredientRecipe object link to recipe
+        foreach ($this->ingredients as $ingredient) {
+            $ingredient->setRecipe($this);
+        }
+
         return $this;
     }
 

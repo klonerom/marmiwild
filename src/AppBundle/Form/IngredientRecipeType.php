@@ -48,11 +48,7 @@ class IngredientRecipeType extends AbstractType
                 },
                 'choice_label' => function ($unity) {
                     return $unity->getUnity();
-                }])
-            ->add('serving', IntegerType::class, [
-                'label' => 'Nombre de personnes',
-                'required' => false,
-            ]);
+                }]);
 
     }/**
      * {@inheritdoc}

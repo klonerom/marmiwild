@@ -2,13 +2,14 @@
 
 {% block body %}
     <h1>Liste des recettes</h1>
-    <a href="{{ path('recipe_new') }}"><i class="fas fa-plus"></i> Ajouter une nouvelle recette</a>
+    <a href="{{ path('recipe_new') }}" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter une nouvelle recette</a>
 
-    <table class="table table-striped table-responsive-sm mt-5">
+    <table class="table table-striped table-responsive-sm mt-5 text-center">
         <thead>
             <tr>
                 <th>Recette</th>
                 <th>Personnes</th>
+                <th>Ingrédients</th>
                 <th>Difficulté</th>
                 <th>Coût</th>
                 <th>Temps (min)</th>
@@ -20,18 +21,19 @@
             <tr>
                 <td>{{ recipe.name }}</td>
                 <td>{{ recipe.serving }}</td>
+                <td>{{ recipe.ingredients|length }}</td>
                 <td>{{ recipe.difficultyLevel.level }}</td>
                 <td>{{ recipe.cost.cost }}</td>
                 <td>{{ recipe.preparationTime + recipe.cookTime }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('recipe_show', { 'id': recipe.id }) }}"><i class="fas fa-info-circle"></i></a>
-                        </li>
-                        <li>
-                            <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}"><i class="fas fa-pencil-alt"></i></a>
-                        </li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="{{ path('recipe_show', { 'id': recipe.id }) }}" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
