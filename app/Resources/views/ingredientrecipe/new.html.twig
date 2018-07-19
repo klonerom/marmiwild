@@ -5,12 +5,15 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="enregistrer" class="btn btn-success" />
+        <input type="submit" value="Enregistrer" class="btn btn-success" />
     {{ form_end(form) }}
 
     <ul>
         <li>
             <a href="{{ path('ingredients-recipe_index', {'recipe_id': recipe.id}) }}"><i class="fas fa-list"></i> Retour à la liste des ingrédients</a>
+        </li>
+        <li>
+            <a href="{{ path('ingredient_new') }}" class="btn btn-success" title="Ajouter un nouvel ingrédient"><i class="fas fa-plus"></i> Ajouter un nouvel ingrédient à la liste des ingrédients disponibles</a>
         </li>
     </ul>
 {% endblock %}
