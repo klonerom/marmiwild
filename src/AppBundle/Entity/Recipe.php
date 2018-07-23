@@ -289,9 +289,9 @@ class Recipe
      * @param int $ingredients
      * @return Recipe
      */
-    public function setIngredients($ingredients)
+    public function setIngredients(array $ingredients)
     {
-        $this->ingredients = $ingredients;
+        $this->ingredients = new ArrayCollection($ingredients); //si on set des ingredients ils devront etre de type ArrayCollection pour ne pas avoir d'erreur dans le get et toArray : ainsi ingredients est un arrayCollection tout le temps (typé soit dans le construct soit dans le set avec le même type)
 
         //add recipe in each ingredientRecipe object link to recipe
         foreach ($this->ingredients as $ingredient) {
